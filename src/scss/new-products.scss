@@ -1,0 +1,109 @@
+.new-products {
+  background: url("@img/new-products/bg.jpg") center / cover no-repeat;
+  position: relative;
+  &::before {
+    content: "";
+    background-color: #fff;
+    height: rem(45);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: percent(1030, 1920);
+  }
+  &__inner {
+    @include adaptiveValue("padding-top", 55, 20);
+    @include adaptiveValue("padding-bottom", 55, 20);
+  }
+  &__container {
+    display: grid;
+    row-gap: 40px;
+    @media (min-width: $tablet) {
+      grid-template-columns: rem(400) 1fr;
+      align-items: start;
+    }
+  }
+
+  &__body {
+    @include adaptiveValue("padding-right", 70, 20, 1630, 992, 2);
+  }
+
+  &__section {
+    position: relative;
+    z-index: 2;
+    @media (max-width: $mobileSmall) {
+      padding: rem(30) 0px 0px 0px;
+    }
+  }
+
+  &__title {
+    color: #fff;
+    font-weight: 600;
+    font-size: rem(30);
+    line-height: math.div(46, 30);
+    &:not(:last-child) {
+      margin-bottom: em(30, 30);
+      @media (max-width: $mobileSmall) {
+        margin-bottom: rem(20);
+      }
+    }
+  }
+
+  &__text {
+    font-size: rem(18);
+    line-height: math.div(27, 18);
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.7);
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 60, 20);
+    }
+  }
+
+  &__link {
+    color: $mainOrange;
+  }
+
+  &__content {
+    min-width: 0;
+    @media (min-width: $tablet) {
+      padding: rem(37) 0px 0px 0px;
+    }
+  }
+
+  &__slider {
+  }
+
+  &__swiper {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 50, 20);
+    }
+  }
+
+  &__slide {
+  }
+
+  &__dots {
+    position: relative;
+    z-index: 3;
+  }
+}
+//========================================================================================================================================================
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  color: $mainOrange;
+  font-weight: 600;
+  font-size: rem(20);
+  &::before {
+    margin: 0px 0px 0px em(20, 20);
+    transform: rotate(-90deg);
+    font-size: rem(8);
+  }
+  @media (any-hover: hover) {
+    &:hover {
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}

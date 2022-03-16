@@ -1,2 +1,2 @@
-# KnifesGallerySRC
-Source. w/ gulp/webpack files
+# KnifesGallery
+Shop 

@@ -1,0 +1,155 @@
+.catalog {
+  @include adaptiveValue("padding-bottom", 120, 40);
+  &__container {
+  }
+
+  &__body {
+    display: grid;
+    gap: rem(30);
+    align-items: start;
+    @media (min-width: $tablet) {
+      grid-template-columns: rem(375) 1fr;
+    }
+  }
+
+  &__filter {
+  }
+
+  &__content {
+  }
+
+  &__control {
+    display: flex;
+    justify-content: flex-end;
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+    }
+  }
+
+  &__products {
+    display: grid;
+    gap: rem(30);
+    grid-template-columns: repeat(auto-fit, minmax(rem(290), 1fr));
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 60, 30);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    gap: rem(20);
+    @media (max-width: $tablet) {
+      flex-direction: column;
+    }
+  }
+
+  &__more {
+  }
+
+  &__pag {
+  }
+}
+//========================================================================================================================================================
+.filter-catalog {
+  background: #fefefe;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  &__title {
+    background-color: $mainBGColor;
+    color: #fff;
+    font-weight: 600;
+    font-size: rem(20);
+    line-height: math.div(24, 20);
+    padding: rem(20) rem(30);
+    width: 100%;
+  }
+
+  &__items {
+  }
+
+  &__price {
+  }
+}
+.price-filter {
+  padding: rem(30);
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 100%;
+    &::before {
+      color: $mainOrange;
+      font-size: rem(8);
+      transform: rotate(-180deg);
+      transition: transform 0.3s ease 0s;
+    }
+    &._spoller-active {
+      &::before {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__body {
+    padding: rem(30) 0px 0px 0px;
+  }
+
+  &__inputs {
+    display: flex;
+    border: 1px solid #cbcbcb;
+    border-radius: rem(3);
+    overflow: hidden;
+    &:not(:last-child) {
+      margin-bottom: rem(50);
+    }
+  }
+
+  &__input {
+    height: rem(42);
+    width: 50%;
+    text-align: center;
+    padding: 0px rem(15);
+    &:not(:last-child) {
+      border-right: 1px solid #cbcbcb;
+    }
+  }
+
+  &__range {
+  }
+}
+//========================================================================================================================================================
+.item-filter-catalog {
+  &__title {
+    background-color: $mainBGColor;
+    width: 100%;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: rem(13) rem(30);
+    &::before {
+      color: $mainOrange;
+      font-size: rem(8);
+      transform: rotate(-180deg);
+      transition: transform 0.3s ease 0s;
+    }
+    &._spoller-active {
+      &::before {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__body {
+    padding: rem(30);
+  }
+
+  &__checkbox {
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+    }
+  }
+}

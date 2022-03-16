@@ -1,0 +1,281 @@
+// Заголовки, общие БЭМ блоки и прочее...
+.product-card {
+  background-color: #fff;
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto 1fr;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease 0s;
+  position: relative;
+  @media (any-hover: hover) {
+    &:hover {
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__sale {
+    position: absolute;
+    top: rem(20);
+    left: 0;
+    padding: rem(6) rem(22);
+    z-index: 5;
+    line-height: math.div(22, 18);
+    color: #fff;
+    background-color: $mainOrange;
+    pointer-events: none;
+  }
+
+  &__image {
+    @include adaptiveValue("padding-top", 25, 15);
+    @include adaptiveValue("padding-bottom", 25, 15);
+    @include adaptiveValue("padding-left", 50, 15);
+    @include adaptiveValue("padding-right", 50, 15);
+  }
+
+  &__item-image-ibg {
+    display: block;
+    padding-bottom: percent(240, 270);
+  }
+
+  &__body {
+    padding: rem(20);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    flex: 1 1 auto;
+    font-weight: 600;
+    font-size: rem(20);
+    line-height: math.div(34, 20);
+    &:not(:last-child) {
+      margin-bottom: em(10, 20);
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__link-title {
+  }
+
+  &__info {
+    &:not(:last-child) {
+      margin-bottom: em(15, 16);
+    }
+  }
+
+  &__rating {
+    justify-content: space-between;
+    &:not(:last-child) {
+      margin-bottom: rem(26);
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid rgba(20, 20, 20, 0.5);
+    padding: rem(20) 0px rem(20) 0px;
+    display: flex;
+    align-items: center;
+    gap: rem(15);
+  }
+
+  &__price {
+    font-weight: 600;
+    font-size: rem(20);
+    line-height: math.div(34, 20);
+    flex: 1 1 auto;
+  }
+
+  &__compare,
+  &__favorites {
+    font-size: rem(24);
+    transition: color 0.3s ease 0s;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $mainOrange;
+      }
+    }
+  }
+
+  &__compare {
+  }
+
+  &__favorites {
+  }
+
+  &__cart {
+    width: 100%;
+    span {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      &::before {
+        margin: 0px 0px 0px rem(16);
+      }
+    }
+  }
+}
+.info-product-card {
+  color: #ababab;
+  display: flex;
+  justify-content: space-between;
+  gap: rem(10);
+  font-size: rem(16);
+  &__size {
+  }
+
+  &__materials {
+    text-align: right;
+  }
+}
+//========================================================================================================================================================
+.dots {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  margin: 0px auto;
+  overflow: hidden;
+  .swiper-pagination-bullet {
+    cursor: pointer;
+    height: rem(30);
+    width: rem(25);
+    position: relative;
+    transition: all 0.3s ease 0s;
+    margin: 0px rem(7.5);
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translate(0px, -50%);
+      height: rem(2);
+      background-color: #898989;
+    }
+    &::before {
+      content: "";
+      border-radius: 50%;
+      background-color: $mainOrange;
+      width: rem(10);
+      height: rem(10);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0px, -50%);
+      box-shadow: 0 0 5px $mainOrange;
+      opacity: 0;
+    }
+  }
+  .swiper-pagination-bullet-active {
+    &::after {
+      content: "";
+      background-color: $mainOrange;
+    }
+    &::before {
+      content: "";
+      opacity: 1;
+      left: rem(20);
+      transition: left 3s linear 0s;
+    }
+  }
+}
+//========================================================================================================================================================
+.breadcrumbs {
+  white-space: nowrap;
+  overflow: auto;
+  height: rem(22);
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+  }
+
+  &__link {
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    &::after {
+      content: "\e900";
+      @extend %ic;
+      font-size: rem(8);
+      transform: rotate(-90deg);
+      margin: 0px em(10, 6);
+    }
+    span {
+      @media (any-hover: hover) {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__current {
+    color: $mainOrange;
+  }
+}
+//========================================================================================================================================================
+.title {
+  font-weight: 700;
+  font-size: rem(24);
+  line-height: math.div(29, 24);
+  &:not(:last-child) {
+    margin-bottom: em(25, 24);
+  }
+}
+//========================================================================================================================================================
+.pagging {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @include adaptiveValue("gap", 30, 15);
+  &__arrow {
+    color: $mainOrange;
+    &::before {
+      font-size: rem(10);
+    }
+    &:disabled {
+      color: rgba(0, 0, 0, 0.12);
+      cursor: not-allowed;
+    }
+    &_left {
+      transform: rotate(90deg);
+    }
+
+    &_right {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: rem(15);
+  }
+
+  &__item {
+  }
+
+  &__link {
+    width: rem(34);
+    height: rem(34);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    &._active {
+      color: #fff;
+      background-color: $mainOrange;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        color: #fff;
+        background-color: $mainOrange;
+      }
+    }
+  }
+}
